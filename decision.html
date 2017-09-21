@@ -5,48 +5,68 @@
 	<title>Magic 8 Ball: Decisions, Decisions</title>
 
 	<script type="text/javascript">
+		var hasExplained = false
+
 		var makeDecision = function() {
-			alert("making a decision here..")
-			//javascript function here, fill answer
+
+			//clear the explanation, if populated
+			document.getElementById("Explanation").innerHTML = ""
+
+			//make a choice
 			var choice
 			if (myRandom(2) == 0) {
 				choice = document.getElementsByName("optionA")[0].value
 			} else {
 				choice = document.getElementsByName("optionB")[0].value
 			}
-			console.log(choice)
+			//console.log(choice)
 
-			//construct the "Answer" division
-			//\"" + choice + "\"
+			//populate the "Answer" division
 			var inner = "<h2>Answer:</h2>" +
 			"<p>" + choice + "</p>" +
 			"<button type=\"button\" onclick=\"giveReason(\'"+choice+"\')\">Ask me why</button>"
-			console.log(inner)
+			//console.log(inner)
 
-			var answer = document.getElementById("Answer");
-			answer.innerHTML = inner
+			document.getElementById("Answer").innerHTML = inner
+
+			hasExplained = false;
 		}
 
 		var giveReason = function(choice) {
-			alert("giving a reason")
+
+			//check if an explanation has already been given
+			if (hasExplained == true) {
+				alert("You have your answer! Do not question the magic of the great oracle!")
+				return
+			}
+
+			//handle undefined argument
 			if (choice === undefined) {
 				choice = "My answer"
 			}
-			//if () make it so that it will only explain once alert("You have your answer!")
 
+			//list of possible explanations, to be expanded as I please
 			var manyExplanations = [
 			"\"" + choice + "\" is clearly the better answer.  I don't feel like I need to say more.",
 			"Nietzsche wrote: \"One no longer loves one's insight enough once one communicates it.\"  Ergo, \"" + choice + "\" is the correct answer.  Don't argue with Nietzsche, he's a philosopher.  Also, he's dead so you can't really...",
-			"Did you know that the platypus is a \"monotreme\"?  Thats Greek for \"wierdo.\"  Or maybe it was Farsi for \"egg-laying mammal...\"  Either way, the platypus is also \"venemous,\" which is Russian for \"extremely playful.\"  Seriously, <a href=\"https://en.wikipedia.org/wiki/Platypus\">check<a> it out! Really makes you think differently...\n\n...are you still here?",
-			"Quantum tunneling is responsible for a lot of wierd stuff.  Schrodinger's cat, the Kennedy assasination, crop circles...I believe I've made my point.  Go with " + choice + ".\""
+			"Did you know that the platypus is a \"monotreme\"?  Thats Greek for \"wierdo.\"  Or maybe it was Farsi for \"egg-laying mammal...\"  Either way, the platypus is also \"venemous,\" which is Russian for \"extremely playful.\"  Seriously, <a href=\"https://en.wikipedia.org/wiki/Platypus\">check<a> it out! Really makes you think differently...\n\n...anyhow, to make a long story short: \"" + choice + ".\"",
+			"<a href=\"https://xkcd.com/1240/\">Quantum tunneling</a> is responsible for a lot of wierd stuff.  Schrodinger's cat, the Kennedy assasination, crop circles...I believe I've made my point.  Go with \"" + choice + ".\"",
+			"It actually has to do with the phases of the <a href=\"https://xkcd.com/1738/\">moon</a>.",
+			"\"<a href=\"https://plato.stanford.edu/entries/metaphysics/\">Metaphysics</a>\"",
+			"Have you ever heard of flipping a coin?  Haha, well, we \"definately\" didn't do that!",
+			"There is a <a href=\"https://xkcd.com/221/\">random number generation<a> seed somewhere that holds the answer you seek... just kidding, it was MAGIC!",
+			"We've got one of those \"Eye of Agamotto\" things?  Picked it up on discount.",
+			"Well, since I can see the future, I just played out the alternative consequences and found that\"" + choice + "\" is the better option!  ...Ooo, wait. Actually, are you into brown or blonde hair?"
 			]
 
+			//choose an explanation
 			var theExplanation = manyExplanations[myRandom(manyExplanations.length)]
-			console.log(theExplanation)
-			var explanation = document.getElementById("Explanation")
-			explanation.innerHTML = "<p>" + theExplanation + "</p>";
+			//console.log(theExplanation)
+			
+			//populate the Explanation div
+			document.getElementById("Explanation").innerHTML = "<p>" + theExplanation + "</p>";
 
-
+			hasExplained = true
 		}
 
 		var myRandom = function(i) {
@@ -83,6 +103,10 @@
 		</div>
 
 		<div id="Explanation">
+		</div>
+
+		<div class="footer" id="decFooter">
+			<p><a href="index.html">Back to Main Page</a></p>
 		</div>
 
 	</div>
