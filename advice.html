@@ -1,9 +1,85 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Magic 8 Ball: Advice</title>
-</head>
-<body>
+<head/>
+<title>Magic 8 Ball v2: To Do or Not to Do…</title>
+<script type="text/javascript">
+	var makeDecision=function() {
 
+		var RNG=function(i){var rand=Math.floor((Math.random()*i))
+			return rand
+		}
+
+		alert("making a decision here..")
+		
+		var choice
+		if(RNG(2)==0){
+			choice=Yes
+		} else {
+			choice=No
+		}
+
+		console.log(choice)
+		
+		var h=document.createElement("H2")
+		var t=document.createTextNode("Answer: ")
+		h.appendChild(t);var inner=button.onclick=giveReason('choice')
+		console.log(inner)
+
+		var answer=document.getElementById("Answer")
+		answer.innerHTML=inner
+	}
+
+	var giveReason=function(choice){
+		alert("giving a reason")
+		var reasons=[
+		"I mean, that's the sensible thing to do"
+		]
+
+		var theReason=reasons[RNG(reasons.length)]
+		console.log(theReason)
+	}
+</script>
+
+<body>
+	<div class="container" id="advContainer">
+		<div class="title" id="advTitle">
+			<h1>Magic 8 Ball's Decision Maker: Yes or No</h1>
+		</div>
+
+		<div class="explanation" id="advExplanation">
+			<p>This Magic 8 Ball will answer one of the most profound questions: to be, or not to be? Ask a &quot;yes or no&quot; question and this miracle worker will tell you what you should do and, if you so desire, why.<p>
+		</div>
+
+		<div id="advOptions">
+			<h2>Question</h2>
+			<input type="text" name="Question">
+			<form id="calculator">
+				<button type="button" class="calculateButton">Decide for me</button>
+			</form>
+			<script type="text/javascript">
+				function Calc(form){
+					this.form=typeof form==="string"?document.getElementById(form):form;
+					this.makeDecision=this.makeDecision.bind(this);
+					this.form.querySelector("button.calculateButton").addEventListener("click",this.makeDecision,false);
+				}
+				Calc.prototype = {
+					form:null,constructor:Calc,makeDecision:function(event){
+						event.preventDefault();
+					}
+				};
+				var calculator=new Calc("calculator");
+			</script>
+		</div>
+
+		<div id="Answer"></div>
+
+		<div id="Explanation"></div>
+		
+		<p id="theReason"> </p>
+
+		<script>
+			document.getElementById("theReason").innerHTML=theReason
+		</script>
+	</div>
 </body>
 </html>
