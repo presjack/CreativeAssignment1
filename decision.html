@@ -4,37 +4,50 @@
 	<title>Magic 8 Ball: Decisions, Decisions</title>
 	<script type="text/javascript">
 		makeDecision = function() {
+			alert("making a decision here..")
 			//javascript function here, fill answer
+			var choice
+			if (myRandom(1) == 0) {
+				choice = document.getElementsByName("optionA")[0].value
+			} else {
+				choice = document.getElementsByName("optionB")[0].value
+			}
+
+			//construct the "Answer" division
+			var inner = "<h2>Answer:</h2><p>" + choice + "</p><button type=\"button\" onclick=\"giveReason(" + choice + ")\">Ask me why</button>"
 
 		}
 
 		giveReason = function(var theAnswer) {
+			alert("You don't accept my answer on faith? Very well...")
 			//javascript function here
 		}
 
-		var random = function(var i) {
-			var x = Math.floor((Math.random() * i) + 1);
-			return x;
+		var myRandom = function(var i) {
+			var x = Math.floor((Math.random() * i))
+			return x
 		}
 
 	</script>
 </head>
 <body>
-	<div id="container">
-		<div id="title">
+	<div class="container" id="decContainer">
+		<div class="title" id="decTitle">
 			<h1>Magic 8 Ball's Decision Maker</h1>
 		</div>
 
-		<div id="explanation">
-			<p>Are you one of those people who has trouble making decisions?  Well you will be glad you decided to use our decision maker.  The Magic 8 Ball will relieve you of all your decision making stress by giving you the best option based upon completely sound "reasoning."  Don't be afraid, give it a try!  The Magic 8 Ball will not lead you astray...</p>
+		<div class="explanation" id="decExplanation">
+			<p>Are you one of those people who has trouble making decisions?  Well you will be glad you decided to use our decision maker!  The Magic 8 Ball will relieve you of all your decision making stress by giving you the best option based upon completely sound "reasoning" (also magic).  Don't be afraid, give it a try!  The Magic 8 Ball will not lead you astray...</p>
 		</div>
 
-		<div id="options">
+		<div id="decOptions">
 			<h2>Option A</h2>
 			<!-- insert text box -->
+			<input type="text" name="optionA">
 
 			<h2>Option B</h2>
 			<!-- insert text box -->
+			<input type="text" name="optionB">
 
 			<button type="button" onclick="makeDecision()">Decide for me</button>
 		</div>
