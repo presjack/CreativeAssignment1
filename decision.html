@@ -1,35 +1,62 @@
-<!DOCTYPE html>
 <html>
+
 <head>
+
 	<title>Magic 8 Ball: Decisions, Decisions</title>
+
 	<script type="text/javascript">
-		makeDecision = function() {
+		var makeDecision = function() {
 			alert("making a decision here..")
 			//javascript function here, fill answer
 			var choice
-			if (myRandom(1) == 0) {
+			if (myRandom(2) == 0) {
 				choice = document.getElementsByName("optionA")[0].value
 			} else {
 				choice = document.getElementsByName("optionB")[0].value
 			}
+			console.log(choice)
 
 			//construct the "Answer" division
-			var inner = "<h2>Answer:</h2><p>" + choice + "</p><button type=\"button\" onclick=\"giveReason(" + choice + ")\">Ask me why</button>"
+			//\"" + choice + "\"
+			var inner = "<h2>Answer:</h2>" +
+			"<p>" + choice + "</p>" +
+			"<button type=\"button\" onclick=\"giveReason(\'"+choice+"\')\">Ask me why</button>"
+			console.log(inner)
+
+			var answer = document.getElementById("Answer");
+			answer.innerHTML = inner
+		}
+
+		var giveReason = function(choice) {
+			alert("giving a reason")
+			if (choice === undefined) {
+				choice = "My answer"
+			}
+			//if () make it so that it will only explain once alert("You have your answer!")
+
+			var manyExplanations = [
+			"\"" + choice + "\" is clearly the better answer.  I don't feel like I need to say more.",
+			"Nietzsche wrote: \"One no longer loves one's insight enough once one communicates it.\"  Ergo, \"" + choice + "\" is the correct answer.  Don't argue with Nietzsche, he's a philosopher.  Also, he's dead so you can't really...",
+			"Did you know that the platypus is a \"monotreme\"?  Thats Greek for \"wierdo.\"  Or maybe it was Farsi for \"egg-laying mammal...\"  Either way, the platypus is also \"venemous,\" which is Russian for \"extremely playful.\"  Seriously, <a href=\"https://en.wikipedia.org/wiki/Platypus\">check<a> it out! Really makes you think differently...\n\n...are you still here?",
+			"Quantum tunneling is responsible for a lot of wierd stuff.  Schrodinger's cat, the Kennedy assasination, crop circles...I believe I've made my point.  Go with " + choice + ".\""
+			]
+
+			var theExplanation = manyExplanations[myRandom(manyExplanations.length)]
+			console.log(theExplanation)
+			var explanation = document.getElementById("Explanation")
+			explanation.innerHTML = "<p>" + theExplanation + "</p>";
+
 
 		}
 
-		giveReason = function(var theAnswer) {
-			alert("You don't accept my answer on faith? Very well...")
-			//javascript function here
-		}
-
-		var myRandom = function(var i) {
+		var myRandom = function(i) {
 			var x = Math.floor((Math.random() * i))
 			return x
 		}
 
 	</script>
 </head>
+
 <body>
 	<div class="container" id="decContainer">
 		<div class="title" id="decTitle">
@@ -54,6 +81,11 @@
 
 		<div id="Answer">
 		</div>
+
+		<div id="Explanation">
+		</div>
+
 	</div>
 </body>
+
 </html>
