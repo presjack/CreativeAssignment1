@@ -1,7 +1,49 @@
 div {
-	padding: 20px;
+	padding: 10px;
 }
 
-.footer {
+.side-by-side-blocks, {
 	text-align: center;
+}
+
+.block1, .block2 {
+	/*float: left;*/
+	margin: auto;
+	display: inline-block;
+}
+
+.round-button {
+	width: 5em;
+	height:5em;
+    border-radius: 50%;
+    overflow:hidden;
+    margin: auto;
+    vertical-align: middle;
+    
+    background: #050505; 
+    box-shadow: 0 0 3px gray;
+
+    display:block;
+	margin-top:-0.5em;
+}
+
+.round-button p {
+	height: 100%;
+	width: 100%;
+	text-align:center;
+	color:#4679BD;
+    font-family:Verdana;
+    font-size:1.2em;
+    font-weight:bold;
+    text-decoration:none;
+    vertical-align: middle;
+}
+
+.round-button:hover {
+	background:#282828;
+}
+
+.header, .footer {
+	text-align: center;
+	background-color: #050505;
 }

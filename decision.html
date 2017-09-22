@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -11,24 +12,33 @@
 		var makeDecision = function() {
 
 			//clear the explanation, if populated
-			document.getElementById("Explanation").innerHTML = ""
+			document.getElementById("decExplanation").innerHTML = ""
+			document.getElementById("decAnswer").innerHTML = ""
+
+			var choiceA = document.getElementsByName("optionA")[0].value
+			var choiceB = document.getElementsByName("optionB")[0].value
+
+			if (choiceA == "" || choiceB == "") {
+				alert("You must give me options to work with!")
+				return;
+			}
 
 			//make a choice
 			var choice
 			if (myRandom(2) == 0) {
-				choice = document.getElementsByName("optionA")[0].value
+				choice = choiceA
 			} else {
-				choice = document.getElementsByName("optionB")[0].value
+				choice = choiceB
 			}
 			//console.log(choice)
 
 			//populate the "Answer" division
 			var inner = "<h2>Answer:</h2>" +
 			"<p>" + choice + "</p>" +
-			"<button type=\"button\" onclick=\"giveReason(\'"+choice+"\')\">Ask me why</button>"
+			"<div class=\"round-button\" onclick=\"giveReason(\'"+choice+"\')\"><p>Ask me why</p></div>"
 			//console.log(inner)
 
-			document.getElementById("Answer").innerHTML = inner
+			document.getElementById("decAnswer").innerHTML = inner
 
 			hasExplained = false;
 		}
@@ -65,7 +75,7 @@
 			//console.log(theExplanation)
 			
 			//populate the Explanation div
-			document.getElementById("Explanation").innerHTML = "<p>" + theExplanation + "</p>";
+			document.getElementById("decExplanation").innerHTML = "<p>" + theExplanation + "</p>";
 
 			hasExplained = true
 		}
@@ -76,10 +86,13 @@
 		}
 
 	</script>
+
 </head>
 
 <body>
 	<div class="container" id="decContainer">
+		<div class="header" id="decHeder"></div>
+
 		<div class="title" id="decTitle">
 			<h1>Magic 8 Ball's Decision Maker</h1>
 		</div>
@@ -88,22 +101,25 @@
 			<p>Are you one of those people who has trouble making decisions?  Well you will be glad you decided to use our decision maker!  The Magic 8 Ball will relieve you of all your decision making stress by giving you the best option based upon completely sound "reasoning" (also magic).  Don't be afraid, give it a try!  The Magic 8 Ball will not lead you astray...</p>
 		</div>
 
-		<div id="decOptions">
-			<h2>Option A</h2>
-			<!-- insert text box -->
-			<input type="text" name="optionA">
+		<div class="side-by-side-blocks">
+			<div class="block1" id="decOptionA">
+				<h2>Option A</h2>
+				<input type="text" name="optionA">
+			</div>
 
-			<h2>Option B</h2>
-			<!-- insert text box -->
-			<input type="text" name="optionB">
+			<div class="block2" id="decOptionB">
+				<h2>Option B</h2>
+				<input type="text" name="optionB">
+			</div>
 
-			<button type="button" onclick="makeDecision()">Decide for me</button>
 		</div>
 
-		<div id="Answer">
+		<div class="round-button" onclick="makeDecision()"><p>Decide for me</p></div>
+
+		<div class="answer" id="decAnswer">
 		</div>
 
-		<div id="Explanation">
+		<div class="explanation" id="decExplanation">
 		</div>
 
 		<div class="footer" id="decFooter">
