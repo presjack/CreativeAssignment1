@@ -1,85 +1,97 @@
-<!DOCTYPE html>
 <html>
-<head/>
-<title>Magic 8 Ball v2: To Do or Not to Do…</title>
-<script type="text/javascript">
-	var makeDecision=function() {
+<head>
+  <link rel="stylesheet" type="text/css" href="main.css">
+  <title>Magic 8 Ball v2: To Do or Not to Do</title>
 
-		var RNG=function(i){var rand=Math.floor((Math.random()*i))
-			return rand
-		}
+    <script type="text/javascript">
+      var RNG=function(i) {
+        var rand=Math.floor((Math.random()*i))
+        return rand
+      }
 
-		alert("making a decision here..")
-		
-		var choice
-		if(RNG(2)==0){
-			choice=Yes
-		} else {
-			choice=No
-		}
+    var makeDecision=function()
+    {
+      var textVal=document.getElementsByName("Question")[0].value
+      if (textVal == "")
+      {
+        alert("Um, you kind of forgot to ask a question.")
+        return
+      }
+      var choice
+      if(RNG(2)==0)
+      {choice="Yes"}
+      else
+      {choice="No"}
+      console.log(choice)
+      var inner= "<h2>Answer: </h2>" +
+      "<p>" + choice + "</p>" +
+      "<div class=\"round-button\" onclick=\"giveReason(\'" + choice + "\')\"><p>Ask me why</p></div>"
+      console.log(inner)
+      var answer=document.getElementById("Answer");
+      answer.innerHTML=inner
+    }
+    var giveReason=function(choice)
+    {
 
-		console.log(choice)
-		
-		var h=document.createElement("H2")
-		var t=document.createTextNode("Answer: ")
-		h.appendChild(t);var inner=button.onclick=giveReason('choice')
-		console.log(inner)
 
-		var answer=document.getElementById("Answer")
-		answer.innerHTML=inner
-	}
+    var reasons=["I mean, that's the sensible thing to do.",
+    "Ever hear the cry of a Beluga Whale? I thought not.",
+    "You'll understand when you're older.",
+    "I'd tell you... but I'd have to kill you ;)",
+    "See, the the problem is always the same: too many toasters.",
+    "You know that one brand of cereal you always buy? That's why.",
+    "Because... no... no... I wouldn't want you to have an existential crisis.",
+    "I mean, there's only two options to pick from, so I have a 50% chance to be correct, and if you round that up, I am always correct.",
+    "Because I said so.",
+    "42.",
+    "If you listen really closely to the sounds of your computer, the Morse translation might give you a hint.",
+    ":)",
+    "Meh, ask me later.",
+    "Obviously for the same reason that the cow jumped over the moon.",
+    "What, don't you trust me?",
+    "I think it would be better if I didn't tell you.",
+    "Oh, you want a reason? Haha.",
+    "Try asking again. I'll probably have something useful to tell you by then."]
 
-	var giveReason=function(choice){
-		alert("giving a reason")
-		var reasons=[
-		"I mean, that's the sensible thing to do"
-		]
+    var theReason=reasons[RNG(reasons.length)]
 
-		var theReason=reasons[RNG(reasons.length)]
-		console.log(theReason)
-	}
-</script>
+    Explanation.innerHTML=theReason
+    }
+    </script>
+</head>
 
 <body>
-	<div class="container" id="advContainer">
-		<div class="title" id="advTitle">
-			<h1>Magic 8 Ball's Decision Maker: Yes or No</h1>
-		</div>
+  <div class="container">
+    <div class="header"></div>
+    <div class="title" id="decTitle">
+      <h1>Magic 8 Ball's Decision Maker: Yes or No</h1>
+                </div>
 
-		<div class="explanation" id="advExplanation">
-			<p>This Magic 8 Ball will answer one of the most profound questions: to be, or not to be? Ask a &quot;yes or no&quot; question and this miracle worker will tell you what you should do and, if you so desire, why.<p>
-		</div>
+                <div class="description">
+                        <p>This Magic 8 Ball will answer one of the most
+                          profound questions ever recited: to be, or not to be?
+                          Ask a "yes or no" question and this miracle worker
+                          will tell you what you should do and,
+                          if you so desire, why.</p>
+                </div>
 
-		<div id="advOptions">
-			<h2>Question</h2>
-			<input type="text" name="Question">
-			<form id="calculator">
-				<button type="button" class="calculateButton">Decide for me</button>
-			</form>
-			<script type="text/javascript">
-				function Calc(form){
-					this.form=typeof form==="string"?document.getElementById(form):form;
-					this.makeDecision=this.makeDecision.bind(this);
-					this.form.querySelector("button.calculateButton").addEventListener("click",this.makeDecision,false);
-				}
-				Calc.prototype = {
-					form:null,constructor:Calc,makeDecision:function(event){
-						event.preventDefault();
-					}
-				};
-				var calculator=new Calc("calculator");
-			</script>
-		</div>
+                <div class="general-section">
+                        <h2>Question: </h2>
+                        <input type="text" name="Question">
 
-		<div id="Answer"></div>
+                </div>
 
-		<div id="Explanation"></div>
-		
-		<p id="theReason"> </p>
+                <div class="round-button" onclick="makeDecision()"><p>See what fate holds</p></div>
 
-		<script>
-			document.getElementById("theReason").innerHTML=theReason
-		</script>
-	</div>
+                <div class="general-section" id="Answer"></div>
+
+                <div class="general-section" id="Explanation"></div>
+
+    <div class="footer-catch"></div>
+
+    <div class="footer">
+      <p><a href="index.html">Back to Main Page</a></p>
+    </div>
+        </div>
 </body>
 </html>

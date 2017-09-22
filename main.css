@@ -2,13 +2,17 @@ div {
 	padding: 10px;
 }
 
-.side-by-side-blocks, {
+h1, h2 {
+	font-family: Helvetica, sans-serif;
+}
+
+.general-section, {
+	width: 100%;
 	text-align: center;
 }
 
 .block1, .block2 {
-	/*float: left;*/
-	margin: auto;
+	text-align: center;
 	display: inline-block;
 }
 
@@ -19,12 +23,9 @@ div {
     overflow:hidden;
     margin: auto;
     vertical-align: middle;
-    
     background: #050505; 
     box-shadow: 0 0 3px gray;
-
     display:block;
-	margin-top:-0.5em;
 }
 
 .round-button p {
@@ -32,7 +33,7 @@ div {
 	width: 100%;
 	text-align:center;
 	color:#4679BD;
-    font-family:Verdana;
+    font-family: Helvetica, sans-serif;
     font-size:1.2em;
     font-weight:bold;
     text-decoration:none;
@@ -43,7 +44,22 @@ div {
 	background:#282828;
 }
 
+.footer-catch{
+	padding: 30px;
+}
+
 .header, .footer {
 	text-align: center;
 	background-color: #050505;
+	width: 100%;
+	position: fixed;
+	left: 0;
+}
+
+.header {
+	top: 0;
+}
+
+.footer {
+	bottom: 0;
 }

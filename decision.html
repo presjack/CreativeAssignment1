@@ -60,11 +60,11 @@
 			var manyExplanations = [
 			"\"" + choice + "\" is clearly the better answer.  I don't feel like I need to say more.",
 			"Nietzsche wrote: \"One no longer loves one's insight enough once one communicates it.\"  Ergo, \"" + choice + "\" is the correct answer.  Don't argue with Nietzsche, he's a philosopher.  Also, he's dead so you can't really...",
-			"Did you know that the platypus is a \"monotreme\"?  Thats Greek for \"wierdo.\"  Or maybe it was Farsi for \"egg-laying mammal...\"  Either way, the platypus is also \"venemous,\" which is Russian for \"extremely playful.\"  Seriously, <a href=\"https://en.wikipedia.org/wiki/Platypus\">check<a> it out! Really makes you think differently...\n\n...anyhow, to make a long story short: \"" + choice + ".\"",
-			"<a href=\"https://xkcd.com/1240/\">Quantum tunneling</a> is responsible for a lot of wierd stuff.  Schrodinger's cat, the Kennedy assasination, crop circles...I believe I've made my point.  Go with \"" + choice + ".\"",
+			"Did you know that the platypus is a \"monotreme\"?  Thats Greek for \"weirdo.\"  Or maybe it was Farsi for \"egg-laying mammal...\"  Either way, the platypus is also \"venemous,\" which is Russian for \"extremely playful.\"  Seriously, <a href=\"https://en.wikipedia.org/wiki/Platypus\">check<a> it out! Really makes you think differently...\n\n...anyhow, to make a long story short: \"" + choice + ".\"",
+			"<a href=\"https://xkcd.com/1240/\">Quantum tunneling</a> is responsible for a lot of weird stuff.  Schrodinger's cat, the Kennedy assassination, crop circles...I believe I've made my point.  Go with \"" + choice + ".\"",
 			"It actually has to do with the phases of the <a href=\"https://xkcd.com/1738/\">moon</a>.",
 			"\"<a href=\"https://plato.stanford.edu/entries/metaphysics/\">Metaphysics</a>\"",
-			"Have you ever heard of flipping a coin?  Haha, well, we \"definately\" didn't do that!",
+			"Have you ever heard of flipping a coin?  Haha, well, we \"definitely\" didn't do that!",
 			"There is a <a href=\"https://xkcd.com/221/\">random number generation<a> seed somewhere that holds the answer you seek... just kidding, it was MAGIC!",
 			"We've got one of those \"Eye of Agamotto\" things?  Picked it up on discount.",
 			"Well, since I can see the future, I just played out the alternative consequences and found that\"" + choice + "\" is the better option!  ...Ooo, wait. Actually, are you into brown or blonde hair?"
@@ -90,24 +90,24 @@
 </head>
 
 <body>
-	<div class="container" id="decContainer">
-		<div class="header" id="decHeder"></div>
+	<div class="container">
+		<div class="header"></div>
 
-		<div class="title" id="decTitle">
+		<div class="title">
 			<h1>Magic 8 Ball's Decision Maker</h1>
 		</div>
 
-		<div class="explanation" id="decExplanation">
+		<div class="description">
 			<p>Are you one of those people who has trouble making decisions?  Well you will be glad you decided to use our decision maker!  The Magic 8 Ball will relieve you of all your decision making stress by giving you the best option based upon completely sound "reasoning" (also magic).  Don't be afraid, give it a try!  The Magic 8 Ball will not lead you astray...</p>
 		</div>
 
-		<div class="side-by-side-blocks">
-			<div class="block1" id="decOptionA">
+		<div class="general-section">
+			<div class="block1">
 				<h2>Option A</h2>
 				<input type="text" name="optionA">
 			</div>
 
-			<div class="block2" id="decOptionB">
+			<div class="block2">
 				<h2>Option B</h2>
 				<input type="text" name="optionB">
 			</div>
@@ -116,13 +116,16 @@
 
 		<div class="round-button" onclick="makeDecision()"><p>Decide for me</p></div>
 
-		<div class="answer" id="decAnswer">
+		<div class="general-section" id="decAnswer">
 		</div>
 
-		<div class="explanation" id="decExplanation">
+		<div class="general-section" id="decExplanation">
 		</div>
 
-		<div class="footer" id="decFooter">
+
+		<div class="footer-catch"></div>
+
+		<div class="footer">
 			<p><a href="index.html">Back to Main Page</a></p>
 		</div>
 
